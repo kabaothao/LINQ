@@ -2,15 +2,27 @@
 
 
 using System;
+using System.Collections.Generic;
+
 
 namespace MyApp // Note: actual namespace depends on the project name.
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             var books = new BookRepository().GetBooks(); //instantiate the BookRepository called the GetBooks method and get the results.
 
+            //if we didn't have LINQ
+            var cheapBooks = new List<Book>();
+            foreach (var book in books)
+            {
+                if(book.Price < 10)
+                    cheapBooks.Add(book);
+            }
+
+            foreach (var book in cheapBooks)
+                Console.WriteLine(book.Title + "" + book.Price);
         }
     }
 }
