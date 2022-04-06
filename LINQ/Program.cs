@@ -14,8 +14,43 @@ namespace LINQ // Note: actual namespace depends on the project name.
             var books = new BookRepository().GetBooks(); //instantiate the BookRepository called the GetBooks method and get the results.
 
             //LINQ Extension Methods
-            var count = books.Max(b => b.Price);
-            Console.WriteLine(count);
+            //books.Where();
+            //book.single();
+            //books.SingleOrDfault();
+
+            //books.First();
+            //books.FirstOrDefault();
+
+            //books.Last();
+            //books.LastOrDefault();
+
+            //books.Min();
+            //books.Max();
+            //books.Count();
+            //books.Sum();
+            //books.Average(b => b.Price);
+
+            //books.Skip(5).Take(3);
+
+
+
+
+
+
+            //var totalPrices = books.Sum(b => b.Price);
+            //Console.WriteLine(totalPrices);
+
+
+
+
+
+
+            //var maxPrice = books.Max(b => b.Price);
+            //var minPrice = books.Min(b => b.Price);
+
+            //Console.WriteLine(maxPrice);
+            //Console.WriteLine(minPrice);
+
 
 
 
@@ -68,6 +103,14 @@ You can query:
             foreach (var book in cheapBooks)
                 Console.WriteLine(book);
                 //Console.WriteLine(book.Title + "" + book.Price);
+
+You can use LINQ in a lot of cases and what LINQ does for you or what Entity Framework
+
+does more precisely is it takes this LINQ extension methods and when you call them, it translates them to SQL query.
+
+So you never have to go and create a story procedure.
+
+Again, this is a very comprehensive topic and it's beyond the scope of this video.
 
 
 
