@@ -12,19 +12,22 @@ namespace LINQ // Note: actual namespace depends on the project name.
         static void Main(string[] args)
         {
             var books = new BookRepository().GetBooks(); //instantiate the BookRepository called the GetBooks method and get the results.
-            var cheapBooks = books.Where(books => books.Price < 10); //Func is a delegate. It points It points to a method that gets a book as an argument and returns a boolean value and this is what we call a predicate. So the general predicate is to get a book,
+
+            //LINQ Extension Methods
+            var cheapBooks = books
+                                .Where(b => b.Price < 10)
+                                .OrderBy(b => b.Title)
+                                .Select(b => b.Title); 
+            
+            //Func is a delegate. it points to a method that gets a book as an argument and returns a boolean value and this is what we call a predicate. So the general predicate is to get a book,
 
 
-            //if we didn't have LINQ
-            var cheapBooks = new List<Book>();
-            foreach (var book in books)
-            {
-                if (book.Price < 10)
-                    cheapBooks.Add(book);
-            }
+            //books.OrderBy(b => b.Title + "" + Book.Price);
 
             foreach (var book in cheapBooks)
-                Console.WriteLine(book.Title + "" + book.Price);
+                Console.WriteLine(book);
+                //Console.WriteLine(book.Title + "" + book.Price);
+
         }
     }
 }
