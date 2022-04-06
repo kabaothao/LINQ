@@ -14,19 +14,19 @@ namespace LINQ // Note: actual namespace depends on the project name.
             var books = new BookRepository().GetBooks(); //instantiate the BookRepository called the GetBooks method and get the results.
 
             //LINQ Extension Methods
-            var cheapBooks = books
-                                .Where(b => b.Price < 10)
-                                .OrderBy(b => b.Title)
-                                .Select(b => b.Title); 
-            
-            //Func is a delegate. it points to a method that gets a book as an argument and returns a boolean value and this is what we call a predicate. So the general predicate is to get a book,
+            var count = books.Max(b => b.Price);
+            Console.WriteLine(count);
 
 
-            //books.OrderBy(b => b.Title + "" + Book.Price);
 
-            foreach (var book in cheapBooks)
-                Console.WriteLine(book);
-                //Console.WriteLine(book.Title + "" + book.Price);
+
+            //foreach (var pagedBook in pagedBooks)
+            //{
+            //    Console.WriteLine(pagedBook.Title);
+            //}
+
+            //var book = books.SingleOrDefault(b => b.Title == "ASP.NET MVC++");
+            //Console.WriteLine(book.Title + " " + book.Price);
 
         }
     }
@@ -44,6 +44,31 @@ You can query:
 2. Databases (LINQ to Entities)
 3. XML (LINQ to XML)
 4. ADO.NET Data Sets (LINQ to Data Sets)
+
+
+
+//LINQ Query Operators
+            var cheaperBooks = 
+                from b in books 
+                where b.Price > 10 
+                orderby b.Title
+                select b.Title;
+
+            //LINQ Extension Methods
+            var cheapBooks = books
+                                .Where(b => b.Price < 10)
+                                .OrderBy(b => b.Title)
+                                .Select(b => b.Title); 
+            
+            //Func is a delegate. it points to a method that gets a book as an argument and returns a boolean value and this is what we call a predicate. So the general predicate is to get a book,
+
+
+            //books.OrderBy(b => b.Title + "" + Book.Price);
+
+            foreach (var book in cheapBooks)
+                Console.WriteLine(book);
+                //Console.WriteLine(book.Title + "" + book.Price);
+
 
 
  */
